@@ -18,7 +18,7 @@ public class Main {
 class Game {
 
 
-    private String[][] gameTable;
+    String[][] gameTable;
     int x, y;
     int counter;
     int randomX, randomY;
