@@ -9,7 +9,6 @@ public class Main {
         game.startGame();
 
 
-
     }
 }
 
@@ -209,6 +208,159 @@ class Game {
         System.out.println(gameTable[2][0] +  "|" + gameTable[2][1] + "|" + gameTable[2][2]);
 
     }
+
+
+
+    public void testGame() {
+
+        int counterTest = 1;
+        int maxText = 8;
+        boolean passed;
+        int k = 0;
+        int counterX = 0, counterO = 0;
+
+
+            // x test
+        while (counterTest <= maxText) {
+            passed = false;
+
+
+            if (counterTest >= 1 && counterTest <= 3) {
+
+                for (int i = 0; i < 3; i++) {
+                    setX(k, i);
+                }
+
+            } else if (counterTest >= 4 && counterTest <= 6) {
+                for (int i = 0; i < 3; i++) {
+                    setX(i, k);
+                }
+            } else if (counterTest == 7){
+                for (int i = 0; i < 3; i++) {
+                    setX(i, i);
+                }
+            } else {
+                for (int i = 0, j = 2; i < 3; i++, j--) {
+                    setX(i, j);
+                }
+            }
+
+            if (k >= 2) {
+                k = 0;
+            } else {
+                k++;
+            }
+
+
+            if (isWin("x")) {
+                System.out.println();
+                passed = true;
+                counterX++;
+            }
+
+            showTable();
+
+
+
+            for (int i = 0; i < gameTable.length; i++) {
+                for (int j = 0; j < gameTable.length; j++) {
+                    gameTable[i][j] = " ";              // clen table
+                }
+            }
+
+
+
+            System.out.print("Test number " + counterTest + ": ");
+            if (passed) {
+                System.out.println("passed");
+            } else {
+                System.out.println("fail");
+            }
+            System.out.println();
+            counterTest++;
+        }
+
+
+        counterTest = 1;
+        k = 0;
+
+            // o test
+        while (counterTest <= maxText) {
+            passed = false;
+
+
+            if (counterTest >= 1 && counterTest <= 3) {
+
+                for (int i = 0; i < 3; i++) {
+                    setO(k, i);
+                }
+
+            } else if (counterTest >= 4 && counterTest <= 6) {
+                for (int i = 0; i < 3; i++) {
+                    setO(i, k);
+                }
+            } else if (counterTest == 7){
+                for (int i = 0; i < 3; i++) {
+                    setO(i, i);
+                }
+            } else {
+                for (int i = 0, j = 2; i < 3; i++, j--) {
+                    setO(i, j);
+                }
+            }
+
+            if (k >= 2) {
+                k = 0;
+            } else {
+                k++;
+            }
+
+
+            if (isWin("o")) {
+                System.out.println();
+                passed = true;
+                counterO++;
+            }
+
+            showTable();
+
+
+
+            for (int i = 0; i < gameTable.length; i++) {
+                for (int j = 0; j < gameTable.length; j++) {
+                    gameTable[i][j] = " ";              // clen table
+                }
+            }
+
+
+
+            System.out.print("Test number " + counterTest + ": ");
+            if (passed) {
+                System.out.println("passed");
+            } else {
+                System.out.println("fail");
+            }
+            System.out.println();
+            counterTest++;
+        }
+
+
+
+
+        if (counterX == 8) {
+            System.out.println("Test x: passed");
+        } else {
+            System.out.println("Test x: failed");
+        }
+
+        if (counterO == 8) {
+            System.out.println("Test o: passed");
+        } else {
+            System.out.println("Test o: failed");
+        }
+
+    }
+
 
 
 
