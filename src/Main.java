@@ -102,6 +102,23 @@ class Game {
         return true;
     }
 
+    public boolean isCross(String character) {
+
+        int counterLeft = 0;
+        int counterRight = 0;
+        for (int i = 0, j = 2; i < gameTable.length; i++, j--) {
+
+            if (gameTable[i][i].equals(character)) {
+                counterLeft++;
+            }
+            if (gameTable[i][j].equals(character)) {
+                counterRight++;
+            }
+        }
+
+        return counterLeft == 3 || counterRight == 3;
+    }
+
 
 
     public boolean isWin(String character) {
@@ -129,12 +146,10 @@ class Game {
                 count1 = 0;
 
             }
-
-
             combinations++;
         }
 
-        return false;
+        return isCross(character);
     }
 
 
